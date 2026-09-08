@@ -1,0 +1,3 @@
+# PipelinePal
+
+PipelinePal is a lightweight job-application tracker built on the classic Board → Column → Card model. It's for anyone actively job hunting who wants one clear view of where every application actually stands, instead of a scattered spreadsheet or a pile of email threads. In this domain, a **Board** is your overall job search, a **Column** is a pipeline stage (Wishlist, Applied, Interviewing, Offer, Rejected), and a **Card** is a single job application — holding the company, role, and any notes from the process. The goal is a fast, no-friction way to glance at your search and immediately know what needs a follow-up next.
