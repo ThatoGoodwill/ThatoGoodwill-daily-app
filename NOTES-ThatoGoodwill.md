@@ -1,0 +1,46 @@
+# NOTES-yourusername
+
+## Assignment 2.1
+
+### Question 1 — Scrum or Kanban, for two different contexts
+
+**Daily App: Kanban.**
+My Daily App is solo, worked in short irregular sessions, with scope that will change as I learn the domain. Scrum's core mechanism is the sprint: a fixed-length box of committed work, planned and reviewed on a cadence, with defined roles (Scrum Master, Product Owner) and ceremonies (standup, retro, sprint planning). None of that machinery earns its cost here — I can't run a "daily standup" with myself, and locking a two-week sprint backlog fights directly against scope that I *expect* to evolve as I build. Kanban's continuous-flow model fits better: I pull the next card when I have capacity (a 45-minute session between classes, not a sprint), I can add/reorder/kill backlog items the moment I learn something new without breaking a sprint commitment, and a WIP limit keeps me from having five half-finished features open at once, which is the real risk in solo work with unpredictable time.
+
+**TrackFlow: Scrum — and yes, the answer differs.**
+TrackFlow is a shared, instructor-led build with the whole cohort. The moment more than one person is coordinating dependent work, the ceremonies Scrum bakes in stop being overhead and start being the thing that prevents chaos: a shared sprint goal keeps everyone building toward the same target, standups surface blockers before they become someone else's blocker, and a retro gives the group a structured moment to adjust process rather than everyone privately being annoyed. This lines up with the Principles' emphasis on daily business/developer collaboration and face-to-face communication — those principles matter most exactly when there's more than one "face" involved. Solo work doesn't need the coordination overhead; group work does.
+
+### Question 2 — A real trade-off
+
+**Value:** *Working software over comprehensive documentation.*
+
+**The real decision:** How much planning documentation do I write in `docs/planning/` before I have a single working card moving between columns? I could keep expanding `epics.md` and writing detailed specs for every feature (auth, notifications, collaboration, reporting) before touching code — or I could write the bare minimum needed to start, and let the docs catch up once something actually runs.
+
+**Where I'll lean:** Toward working software. I'll keep `epics.md` to one line per epic — just enough to show the shape of the whole project — and get a single Board → Column → Card slice actually working before I write anything more detailed than that. The Manifesto is explicit that working software is the primary measure of progress, not the completeness of the plan; a thin app that runs teaches me more about what my epics actually need than another hour spent speculatively documenting a notifications feature I haven't built yet. I'll still write things down — a plan with zero documentation is just as risky as over-planning — but the documentation stays a lightweight map, not the destination.
+
+### Question 3 — Critique and redesign
+
+**Problems with the "TaskBoard Pro" Waterfall brief:**
+
+1. **Requirements frozen for two weeks with no changes permitted once design begins.** This directly violates "Welcome changing requirements, even late in development" and the value of "Responding to change over following a plan." Locking the full feature set (labels, permissions, notifications, reporting) before anyone has used the product for even a day guarantees the spec is wrong in places nobody will discover until Phase 3 or later.
+
+2. **No demos until the entire 5-week build phase is complete.** This violates "Deliver working software frequently" and "Working software is the primary measure of progress." Nine weeks pass (Phases 1–3) before a single stakeholder sees anything real. If the team misunderstood a requirement in week 1, that misunderstanding compounds silently for two months before anyone notices.
+
+3. **Full QA testing pass across all features simultaneously, at the very end.** This violates "Continuous attention to technical excellence" and the shift toward continuous testing throughout the lifecycle. Bugs and integration problems discovered in Week 10 are far more expensive to fix than the same bugs caught the week the feature was built — and there's a real risk of finding a fundamental issue too late to fix before the Week 12 deadline.
+
+4. **(Bonus) Launch to all users at once, in Week 12.** A single big-bang release with no earlier feedback loop is the opposite of "early and continuous delivery of valuable software" — there's no way to catch a bad assumption before it hits every user simultaneously.
+
+**Agile redesign — first two iterations, applied to PipelinePal (my Daily App):**
+
+- **Iteration 1 (roughly 1 week):** Build the smallest possible working slice — a single hardcoded "Applications" board with one column and the ability to add a Card (Company name + Role) and see it in a list. No stages, no auth, no styling. Demo it to myself/instructor at the end: does the core object model (Board → Column → Card) even feel right for a job search?
+- **Iteration 2 (roughly 1 week):** Add multiple columns representing real pipeline stages (Wishlist → Applied → Interviewing → Offer/Rejected) and the ability to move a Card between columns. Still no auth, no notifications. Demo again: does moving a card between stages match how I actually track applications, or does the model need adjusting before I build anything else on top of it?
+
+Each iteration ships something that runs and gets looked at, so the plan can adjust based on what's actually true rather than what was assumed in Week 1.
+
+## NOTES.md Updates
+
+**1. Naming it made it real.**
+Yes — picking "PipelinePal," a job-application tracker, immediately made the abstract Board/Column/Card model concrete in a way "generic board" never did. A "Card" isn't an abstract unit of work anymore; it's a specific job application with a company, a role, a status, and a date I applied. That forced me to think about fields and stages a generic board never would have surfaced (e.g., "Rejected" isn't just "Done," it needs to be distinguishable from "Offer"), which changes what the epics and even the first iteration need to include.
+
+**2. Where the sample brief's problems actually bite.**
+The "no demos until build is complete" problem would hurt the most in practice. Frozen requirements and end-of-project testing are both bad, but a nine-week silent build phase means the team could be building confidently on a wrong assumption made in Week 1 and have zero opportunity to catch it until Week 9 — by which point the cost of fixing it (in time, morale, and rework) is at its absolute highest. The other problems compound *within* a phase; this one compounds silently *across* the majority of the project timeline.
