@@ -44,3 +44,37 @@ Yes — picking "PipelinePal," a job-application tracker, immediately made the a
 
 **2. Where the sample brief's problems actually bite.**
 The "no demos until build is complete" problem would hurt the most in practice. Frozen requirements and end-of-project testing are both bad, but a nine-week silent build phase means the team could be building confidently on a wrong assumption made in Week 1 and have zero opportunity to catch it until Week 9 — by which point the cost of fixing it (in time, morale, and rework) is at its absolute highest. The other problems compound *within* a phase; this one compounds silently *across* the majority of the project timeline.
+
+## skipping without noticing.
+
+Habit to fix it: before I close my laptop each day, I have to write down the one thing I'm doing next, pulled from the backlog, not from memory. If I can't name it, I didn't actually do the PO part of my job that day, I just coded.
+
+Question 2 — Definition of Ready / Definition of Done (Boards & Cards epic)
+
+Ready means:
+
+it's a real user story, not just a title
+there are at least 2 things I can actually test to know it works
+anything it depends on already exists (e.g. don't try to build "add a note to a card" before the card itself exists)
+I've already made the annoying decisions — like what the default columns are — instead of leaving them for "while I'm coding it"
+it's small enough that I could plausibly finish it in one day
+
+Done means:
+
+it's pushed to main and nothing obviously breaks
+I actually clicked through it myself, not just "looks right in the code"
+it survives a refresh — not just working in whatever's in memory
+no red errors in the console
+if it turned out different than what I planned, I go back and fix the doc so it's not lying
+Question 3 — The artifact most at risk
+
+Sprint Backlog, easily. On a solo project with a daily cadence it's really tempting to just do whatever feels urgent that morning and call it "the sprint" instead of actually pulling specific ready items out of the backlog first. The cost is that grooming and doing blur together — there's no moment where I actually commit to something, so scope just kind of drifts all day. It also means the DoR stuff from Q2 doesn't really get enforced, because nothing is checked against it before I start.
+
+NOTES.md Updates
+
+1. Has the neglected role changed? No, still Product Owner. Writing the DoR/DoD out actually made this more obvious — it's really easy to just skip the "is this ready" check and start typing.
+
+2. What did the DoR actually filter out? Yeah, a few things. Moving cards between columns didn't make Sprint 1 because I hadn't decided drag-and-drop vs buttons yet, and I originally assumed that'd be in. Everything outside Boards & Cards got cut too, since I only wrote a DoR for that one epic — some of those (like basic sign-up) feel simple enough that I expected them in, but by my own rule they're not ready yet.
+
+
+
