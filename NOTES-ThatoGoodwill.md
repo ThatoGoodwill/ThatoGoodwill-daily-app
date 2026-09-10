@@ -76,5 +76,36 @@ NOTES.md Updates
 
 2. What did the DoR actually filter out? Yeah, a few things. Moving cards between columns didn't make Sprint 1 because I hadn't decided drag-and-drop vs buttons yet, and I originally assumed that'd be in. Everything outside Boards & Cards got cut too, since I only wrote a DoR for that one epic — some of those (like basic sign-up) feel simple enough that I expected them in, but by my own rule they're not ready yet.
 
+## Assignment 2.3
+Question 1 — Choosing a view
+
+Day to day, Board is going to be my main view. PipelinePal is fundamentally a pipeline (Applied → Interviewing → Offer → Rejected), and honestly the whole point of the app is "what's stuck where" — a Kanban-style board matches that mental model almost exactly, so it's the least friction for checking status at a glance.
+
+List is more useful when I need to actually work, not just look — filtering down to "Sprint 1, not done" or sorting by due date is way easier in list view than scanning a board. I'd reach for it during actual daily work sessions, not for a status check.
+
+Timeline doesn't matter much day to day since this is a solo, daily-cadence project without hard external deadlines, but it'd be useful if I ever need to see how epics overlap or whether Sprint 2 work is going to run into a deadline I've committed to (e.g., if I promise a demo date).
+
+Question 2 — Custom fields, deliberately
+Priority (High / Medium / Low) — supports the filter "what should I work on next if I only have an hour," so I'm not just going in due-date order or whatever's on top.
+Story Points (1 / 2 / 3 / 5) — supports sizing Sprint 1 realistically instead of eyeballing it, and later lets me check "did I actually finish what I estimated."
+Type (Feature / Bug / Chore) — supports separating "am I actually building the product" from "am I just doing repo maintenance," so I can sanity check I'm not spending a whole day on chores.
+
+I'm deliberately not adding more than this — anything I can't name a real filter for isn't going in.
+
+Question 3 — Tag or field?
+
+Tag example: needs-design — something that could apply to a task in any epic (a card UI decision, a reporting chart layout, whatever), and isn't really a property of the task itself so much as a flag I want to filter across the whole project regardless of section.
+
+Custom field example: Priority — it only makes sense within this one project, and every single task should have exactly one value for it, which is what a field is for.
+
+What would go wrong if I swapped them: If Priority were a tag, nothing would stop me from leaving it blank on half the tasks or accidentally tagging something both High and Low, since tags aren't structured or exclusive — the filter "show me everything High priority" gets unreliable. If needs-design were a custom field, I'd be forcing every task in the project to have an opinion on a dropdown that mostly doesn't apply to it, just clutter for the 90% of tasks that have nothing to do with design.
+
+NOTES.md Updates
+
+1. What the QuickNotes exercise revealed Building the sample backlog first made it obvious how fast an Asana project turns into visual noise if you add fields "because you can." I went into my own project already knowing to cut anything from Question 2 that I couldn't name a real filter for.
+
+2. Where Sprint 1 and reality disagreed Moving sprint-1-backlog.md into Asana as actual tasks with subtasks made "edit an existing card's details" look bigger than it did as one line in markdown — it's really at least three separate pieces of work (form, validation, save). I kept it as one Sprint 1 task for now but noted it as the first thing I'd re-size if Sprint 1 runs long.
+
+3. The field vs. tag call I almost got wrong I almost made Type (Feature/Bug/Chore) a tag instead of a field, since it felt similar to needs-design. But every task needs exactly one Type and I do want to filter/report on it directly ("how much of my time is chores"), which is exactly the custom field case, not the tag case.
 
 
