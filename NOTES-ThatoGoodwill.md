@@ -109,3 +109,58 @@ NOTES.md Updates
 3. The field vs. tag call I almost got wrong I almost made Type (Feature/Bug/Chore) a tag instead of a field, since it felt similar to needs-design. But every task needs exactly one Type and I do want to filter/report on it directly ("how much of my time is chores"), which is exactly the custom field case, not the tag case.
 
 
+## Assignment 2.4
+
+## Question 1 — Rewrite Sprint 1 as real user stories
+
+ 1. Define the Board → Column → Card data model As Thato, building this thing solo, I want to lock in what a board/column/card actually looks like before I build anything on top of it, so I'm not rebuilding half of Sprint 1 later because I forgot a field.
+ 2. Create a new board with default columns As someone just starting to use PipelinePal, I want a new board to already have Applied, Interviewing, Offer, and Rejected columns set up, so I can start logging applications right away instead of configuring stuff first.
+ 3. Add a new card to a column As me right after I've submitted an application, I want to quickly log the company, role, date, and the job link, so I don't forget what I applied to or have to go dig up the posting again later.
+ 4. View all cards in a column As me checking in on my job search, I want to see everything sitting in a column at a glance, so I know how many things are actually at each stage without clicking into every single card.
+ 5. Edit an existing card's details As me, when something about an application changes, I want to go update that card, so the board actually reflects reality instead of going stale the second something changes.
+
+ ## Question 2 — Acceptance criteria
+
+ 1. Data model — board/column/card schema is written down somewhere real (not just in my head); default columns (Applied, Interviewing, Offer, Rejected) are baked into the model; someone else could read it and understand the shape without asking me anything.
+ 2. Create board with defaults — new board shows up with exactly those 4 columns, right names, right order, zero cards in them, no extra setup step needed.
+ 3. Add a card — company + role required, date and link optional; card shows up in the right column instantly, no refresh needed; still there after I actually refresh the page.
+ 4. View cards in a column — every card in a column shows up with at least company + role visible; empty column shows an empty state, not a blank confusing screen.
+ 5. Edit a card — opening a card shows its current values already filled in; saving a change updates just that card and survives a refresh; hitting cancel doesn't touch the original data.
+
+ ## Question 3 — INVEST check
+
+  Picked #3, "Add a new card to a column," since basically everything else leans on it.
+
+ . Independent — kind of fails, it needs #1 (data model) and #2 (a board that exists) first. Not a hidden    problem though, it's already an actual dependency in Asana.
+
+ . Negotiable — passes, the form itself isn't locked in, just what it needs to do.
+
+ . Valuable — obviously passes, this is the whole point of the app.
+
+ . Estimable — passes, I know what this involves.
+
+ . Small — passes, one day of work, not several things stapled together.
+
+ . Testable — passes, the acceptance criteria above are actually checkable.
+
+Fails Independent, but that's a real dependency not bad scoping — I'm not changing the story, just making sure I build it in order.
+
+ ## Question 4 — Estimating alone, again
+
+Reference story: "Create a new board with default columns" = 2, since I get it completely.
+
+Define the data model — 3 (more deciding than typing)
+Create board with defaults — 2 (the reference)
+Add a new card — 3 (more fields/validation than the title makes it sound)
+View cards in a column — 1 (it's just a list, genuinely small)
+Edit a card — 3 (basically the same form as adding one, plus pre-filling and saving logic)
+
+The one that surprised me was editing a card. Back in Assignment 2.2 it felt like a tiny tweak on top of "add a card." Writing it out as a full story made me realize it needs its own pre-fill and update logic — it's basically the same size as adding a card, not smaller.
+
+NOTES.md Updates
+
+1. What changed between backlog phrase and real story "Add a new card" looked like plain CRUD when it was just a phrase. Writing the "so that" made me actually picture the moment — right after I've applied, trying not to lose the posting link — and that's literally why the link field matters, not just an extra nice-to-have.
+
+2. The retro, from the inside [Filling this in after the actual TrackFlow retro happens in class — can't write this one honestly beforehand.]
+
+3. Estimating with real stories vs. rough backlog items Less confident on "edit a card" once I wrote the real story out — the vague phrase hid how much overlap it has with adding a card in the first place. Writing acceptance criteria is what actually exposed that, not the estimating step itself.
