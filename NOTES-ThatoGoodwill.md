@@ -268,6 +268,6 @@ After actually writing the ADR, I'd document *fewer* decisions than I originally
 
 ## Links to real artifacts
 
-- README: [link after commit]
+- README: https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/README.md
 - ADR: [link after commit]
 - Documented function: [link after commit]
