@@ -1,4 +1,5 @@
-# NOTES-yourusername
+# NOTES-ThatoGoodwill
+
 
 ## Assignment 2.1
 
@@ -164,3 +165,56 @@ NOTES.md Updates
 2. The retro, from the inside [Filling this in after the actual TrackFlow retro happens in class — can't write this one honestly beforehand.]
 
 3. Estimating with real stories vs. rough backlog items Less confident on "edit a card" once I wrote the real story out — the vague phrase hid how much overlap it has with adding a card in the first place. Writing acceptance criteria is what actually exposed that, not the estimating step itself.
+
+## ## Assignment 3.1
+
+### Question 1 — Suggesting mode vs. comments vs. direct edits
+
+**Direct edits** — for things that are objectively wrong and not worth a conversation. If I spot a typo in my own `product-backlog.md` when I port it into the Project Doc, or a column name written as "Interviewing" in one place and "Interview" in another, I just fix it. Nobody needs to weigh in on a spelling fix.
+
+**Suggesting mode** — for changes to someone else's wording where they should get the final say. Example: if a teammate wrote PipelinePal's Scope section as "track job applications" and I think it should say "track job applications through defined pipeline stages," that's a real change in meaning. Suggesting mode lets them accept or reject it instead of me quietly overwriting their intent.
+
+**Comments** — for raising a question or concern without touching the text at all. Example: on the Timeline section, leaving a comment like "is 4 weeks realistic if Auth isn't started yet?" — I'm not proposing specific replacement wording, I'm flagging something that needs a decision from whoever owns that section.
+
+The rough rule I'm using: if it's objectively wrong, edit it. If I know what it should say but it's not my call, suggest it. If I don't know what it should say but something's off, comment.
+
+### Question 2 — Permissions, deliberately
+
+**Editor** — just me. I'm the only person actually building PipelinePal, so I'm the only one who needs to create, rename, move, or delete files. Handing Editor out more widely wouldn't help anyone and would mean someone could restructure the folder by accident.
+
+**Commenter** — my instructor, and any trainee I'm pairing with for standups. They need to be able to leave real feedback on the Project Doc and flag problems in the tracker, but they have no reason to change the documents themselves. Commenter gets them everything they actually need without the risk.
+
+**Viewer** — other cohorts or anyone who just wants to see what I'm building. They can read the structure and learn from it, but they can't alter or annotate anything.
+
+The reason I'm not defaulting everyone to Editor: Editor includes the ability to delete files and change sharing settings. That's a genuinely destructive level of access to hand out just because it's convenient, and nobody on this list actually needs it.
+
+### Question 3 — Sync or async?
+
+**Belongs in a live Meet call:**
+- **Goal-setting** — this is where disagreement surfaces and needs resolving in real time. A vague goal written async tends to stay vague because nobody wants to be the one to challenge it in a comment thread.
+- **Blocking questions** — if something is genuinely blocking work, waiting for an async reply costs more than the meeting does. That's the whole justification for interrupting someone.
+
+**Belongs in async Docs/Sheets/Calendar:**
+- **Task assignment** — once the goal is agreed, who-does-what is better written down than spoken. A Sheet with an Owner column is unambiguous and still readable next week; a verbal assignment in a call isn't.
+- **Status updates** — these are almost never worth a meeting. Updating a Status field or writing a line in a doc gives everyone the same information without spending anyone's time in sync.
+
+The split I'm using: **sync for anything that needs disagreement resolved or a decision made; async for anything that just needs recording.** Status updates and task lists are information transfer, and meetings are a terrible way to transfer information — but they're a good way to surface the thing nobody wanted to write down.
+
+## NOTES.md Updates
+
+**1. What the "TidyUp" practice revealed**
+Building the sample first made it clear how much faster the whole package goes if the Drive folder structure exists before anything else — I created the Doc first on TidyUp and then had to move it, which was avoidable. On the real PipelinePal folder I built the structure first, then created each file directly inside the right subfolder.
+
+**2. The permission I almost got wrong**
+When sharing the real Project Doc for feedback, my first instinct was to grant Editor, since that's the default that appears and it's one less thing to think about. Caught it and set Commenter instead — feedback doesn't require the ability to rewrite or delete the document, and Editor would also have let them change who else has access.
+
+**3. Sync vs. async, in practice**
+Mostly held up. The one thing I'd move from async to sync: I'd planned to just write the Scope section and let comments handle any disagreement, but the actual back-and-forth about what's in and out of scope for a 4-week build is exactly the kind of thing that takes three comment rounds and could have been two minutes of conversation.
+
+## Links to real (non-sample) artifacts
+
+- Drive folder: https://drive.google.com/drive/folders/16wvRDcxo5XhWGnQXNBZGdmsWo3SUgKU1?usp=drive_link
+- Project Doc:https://docs.google.com/document/d/1Iy7-xcg6C5roBDxp5Yn6waYFeWYc3FBu0cKrQ9aiL0o/edit?usp=sharing
+- Tracker Sheet: https://docs.google.com/spreadsheets/d/1AKK2GXhUNACXC6ZU-e180b4GNfWyY7h3tmrICV7fi88/edit?usp=sharing
+- Kickoff Deck:https://docs.google.com/presentation/d/1BBNUO7uk9lRiA_41CF2vPyrKgba3XxrlhZECxGaWJ0I/edit?usp=sharing
+- Calendar event: https://calendar.app.google/9cEVTqjVdCNDanicA
