@@ -269,5 +269,5 @@ After actually writing the ADR, I'd document *fewer* decisions than I originally
 ## Links to real artifacts
 
 - README: https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/README.md
-- ADR: [link after commit]
-- Documented function: [link after commit]
+- ADR: https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/docs/decisions/0001-plain-js-prototype.md
+- Documented function:https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/docs/createBoard-function-doc.md
