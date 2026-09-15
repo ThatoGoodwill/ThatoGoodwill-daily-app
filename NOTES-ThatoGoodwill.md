@@ -218,3 +218,56 @@ Mostly held up. The one thing I'd move from async to sync: I'd planned to just w
 - Tracker Sheet: https://docs.google.com/spreadsheets/d/1AKK2GXhUNACXC6ZU-e180b4GNfWyY7h3tmrICV7fi88/edit?usp=sharing
 - Kickoff Deck:https://docs.google.com/presentation/d/1BBNUO7uk9lRiA_41CF2vPyrKgba3XxrlhZECxGaWJ0I/edit?usp=sharing
 - Calendar event: https://calendar.app.google/9cEVTqjVdCNDanicA
+
+## ## Assignment 3.2
+
+### Question 1 — Beyond the core four
+
+My capstone repo needs a **Known Limitations** section, beyond Purpose/Setup/Usage/Contribution.
+
+Right now `index.html` looks complete to someone skimming it — there's a button, it renders columns, it looks like a working app. What isn't obvious from reading the code is what it *doesn't* do yet: board state is not persisted anywhere (refreshing the page loses everything), the board name is hardcoded to `'My Job Search'` instead of being user-provided, and there's no way to add a card yet at all despite the file being called a "job application tracker." Leaving this section out would hurt someone by letting them believe the prototype is further along than it is — they'd try to refresh the page mid-demo, lose their board, and reasonably think something is broken when it's actually working exactly as far as it's been built.
+
+### Question 2 — Comment audit
+
+Being honest about what I actually found: **there are currently zero comments anywhere in `index.html`.** So there's no existing bad comment to quote and remove — the file simply hasn't been commented yet, since it was built fast to get real Sprint 1 verification (see Assignment 2.4).
+
+Since the letter of the question assumes an existing bad comment, here's how I handled that gap honestly: I deliberately wrote one intentionally-bad, restating comment, then immediately corrected it, to demonstrate I can actually tell the difference — rather than fabricate a fake "audit history" that didn't happen.
+
+**Bad comment (written, then removed), `index.html`, above the click handler:**
+```js
+// Create a board when the button is clicked
+document.getElementById('createBoardBtn').addEventListener('click', function() {...
+```
+This restates exactly what the next line already says in plain code — the event name, the handler, and the function called are all already legible. It earns nothing.
+
+**Missing "why" comment (added for real), `index.html`, above `const DEFAULT_COLUMNS`:**
+```js
+// Order matters here: columns render left-to-right in this exact sequence,
+// matching the real progression of a job application (not alphabetical
+// or arbitrary) — reordering this array changes the board's visual flow.
+const DEFAULT_COLUMNS = ['Applied', 'Interviewing', 'Offer', 'Rejected'];
+```
+This one earns its place — nothing in the array literal itself tells a reader that the order is meaningful rather than incidental.
+
+### Question 3 — What makes a decision ADR-worthy
+
+The real decision: **building Sprint 1 as a single plain HTML file with inline vanilla JavaScript, instead of the React setup originally planned for PipelinePal.**
+
+What made this ADR-worthy rather than a routine detail: it was a genuine fork with real consequences either way, not an obvious default. React was the original plan; switching to plain JS mid-sprint was a deliberate trade of long-term structure for immediate, verifiable progress on Task 5 of Assignment 2.4, when the repo had no code in it yet at all. A future contributor (or future me) opening this repo and seeing plain inline JavaScript when the README says "React" would be confused without an explanation — that confusion is exactly what an ADR prevents. A routine detail, like naming a variable `board` instead of `currentBoard`, has no real alternative worth weighing and wouldn't confuse anyone regardless of which way it went — that's the line.
+
+## NOTES.md Updates
+
+**1. What the sample exercise revealed**
+Documenting the throwaway signup function first made the "why, not what" rule concrete before I had to apply it to my own code — the bcrypt-rounds comment and the verified-before-login comment in the sample are the exact pattern I reused on my own `DEFAULT_COLUMNS` comment.
+
+**2. The comment I was wrong about**
+Not applicable in the usual sense — there was no existing comment to be wrong about, since the file had none. The real surprise was realizing a completely uncommented file is its own finding, not a non-answer.
+
+**3. The line between decision and detail**
+After actually writing the ADR, I'd document *fewer* decisions than I originally assumed, not more. Writing it out made clear how much work a real ADR takes to do honestly (weighing a real alternative, naming real consequences) — that effort is only worth spending on choices that could plausibly have gone the other way and would confuse someone later if unexplained, which is a smaller set than I first thought.
+
+## Links to real artifacts
+
+- README: [link after commit]
+- ADR: [link after commit]
+- Documented function: [link after commit]

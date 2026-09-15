@@ -11,14 +11,33 @@
      <div id="columns"></div> 
     
      <script >
-        let board = null; 
-        document.getElementById('createBoardBtn').addEventListener('click', function() { board = createBoard('My Job Search'); renderColumns(); }); function renderColumns() { const columnsDiv = document.getElementById('columns'); columnsDiv.innerHTML = ''; Object.keys(board.columns).forEach(function(colName) { const colDiv = document.createElement('div'); colDiv.textContent = colName; columnsDiv.appendChild(colDiv); }); }
-        const DEFAULT_COLUMNS = ['Applied', 'Interviewing', 'Offer', 'Rejected'];
-         function createBoard(name) { 
-            const columns = {}; 
-            DEFAULT_COLUMNS.forEach(col => columns[col] = []);
-             return { name: name, columns: columns }; 
-        }
+       let board = null;
+ 
+document.getElementById('createBoardBtn').addEventListener('click', function() {
+  board = createBoard('My Job Search');
+  renderColumns();
+});
+ 
+function renderColumns() {
+  const columnsDiv = document.getElementById('columns');
+  columnsDiv.innerHTML = '';
+  Object.keys(board.columns).forEach(function(colName) {
+    const colDiv = document.createElement('div');
+    colDiv.textContent = colName;
+    columnsDiv.appendChild(colDiv);
+  });
+}
+ 
+// Order matters here: columns render left-to-right in this exact sequence,
+// matching the real progression of a job application (not alphabetical
+// or arbitrary) — reordering this array changes the board's visual flow.
+const DEFAULT_COLUMNS = ['Applied', 'Interviewing', 'Offer', 'Rejected'];
+ 
+function createBoard(name) {
+  const columns = {};
+  DEFAULT_COLUMNS.forEach(col => columns[col] = []);
+  return { name: name, columns: columns };
+}
      </script>
 </body>
 </html>
