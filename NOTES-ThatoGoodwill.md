@@ -271,3 +271,90 @@ After actually writing the ADR, I'd document *fewer* decisions than I originally
 - README: https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/README.md
 - ADR: https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/docs/decisions/0001-plain-js-prototype.md
 - Documented function:https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/blob/main/docs/createBoard-function-doc.md
+
+## Assignment 3.3
+
+### Question 1 — Channel choice, for real
+
+The real message: asking my Teammate to leave a Commenter-level comment on my Assignment 3.1 Project Doc (Task 7). I sent it as a quick, casual message ("could you leave one when you get a chance? Thanks") wherever the class communicates — effectively Slack-style.
+
+That was actually the right channel — it's a small, low-stakes async request with no real decision attached, so it didn't deserve an email. What I'd change isn't the channel, it's the specificity: I should have linked the exact section I wanted commented on, not just the doc as a whole, so they didn't have to hunt for where to leave it. A one-line addition ("the Goal section is probably the most useful place, but anywhere is fine") would have saved them a decision I could have made for them.
+
+### Question 2 — The self-check you did or skipped
+
+Real blocker this week: when I first asked for React setup steps for Assignment 2.4's Task 5, I hadn't actually checked whether my own repo had any code in it yet. It didn't — it only had planning docs from Weeks 1–2. I asked for framework-specific steps before checking the most basic thing: what's actually in my own project folder.
+
+Being honest: I asked too early. The self-check I skipped was simply opening my own repo and looking. Once I actually did that (after being asked directly), it completely changed the plan — we dropped React for a plain HTML/JS prototype instead, which is what actually got built. The lesson wasn't about React vs. plain JS; it was that I asked for a solution before confirming the starting point.
+
+### Question 3 — Specific vs. vague feedback, side by side
+
+**Specific (how I'd want to receive it), on `createBoard()` in `index.html`:**
+ `createBoard()` doesn't validate its `name` argument — calling it with no argument or a non-string silently produces a board with a broken or nonsensical name instead of failing loudly. Worth adding a guard that rejects empty/non-string input before this becomes part of a real "create board" story with its own acceptance criteria.
+
+**Vague (the common version):**
+ "This needs work."
+
+**The actual difference:** the specific version names the exact function, the exact missing behavior, and a concrete next step, so I can act on it immediately without asking a follow-up question — the vague version requires me to already know what's wrong before it's useful at all, which defeats the purpose of asking for feedback in the first place.
+
+## Part 3 — Real Artifacts
+
+### Task 5 — Real help request
+
+Real, current blocker: I'm not yet sure whether card field validation (for the upcoming "Add a new card to a column" story) should happen only in the browser, or whether I need some kind of schema check before data is considered valid, given there's no backend yet.
+
+**The message I'd actually send:**
+
+ **Context:** Building the "Add a new card to a column" story for PipelinePal — a plain JS prototype right now, no backend or database, everything lives in browser memory.
+
+ **What I tried:** Looked back at how `createBoard()` currently has zero validation (flagged this in my own comment audit for Assignment 3.2), and I don't want to repeat that gap on card creation, which has more required fields.
+
+ **Exact question:** Given there's no backend yet, is it reasonable to do all validation client-side for now (company + role required, reject empty strings) and treat that as "enough" for Sprint 1, or should I be designing the validation as if a backend already exists, so I'm not throwing it away later?
+
+ **Specific ask:** A quick gut-check on whether client-side-only validation is an acceptable Sprint 1 shortcut, or if it's worth the extra time to structure it more durably now.
+
+### Task 6 — Real PR feedback
+
+On the actual `createBoard()` function in `index.html`:
+
+ `createBoard()` currently accepts any value for `name` with no validation — calling it with `undefined` or a number produces a board that "succeeds" but has a broken or nonsensical name (see the Known Limitations section I added to the README, and the function doc under `docs/createBoard-function-doc.md`).
+
+ Suggested direction: add a guard clause at the top — `if (typeof name !== 'string' || !name.trim()) { return { error: 'invalid-name' }; }` — so a bad call fails loudly and predictably instead of silently producing a board that looks fine until someone notices the name is wrong.
+
+ Not urgent for the current prototype, but worth doing before this becomes part of a real "create board" story with its own acceptance criteria in Sprint 2+.
+
+### Task 7 — Reflection on real feedback received
+
+Real feedback I received this week: while working through Assignment 2.4's estimation question, I got pushback that my point estimate for "Edit an existing card's details" (originally assumed small, similar to "view cards") was probably wrong — the actual feedback named the specific reason: editing needs its own pre-fill logic and its own update/persistence path, which "view" doesn't need at all.
+
+What made it useful: it didn't just say "that estimate looks off" — it named the exact hidden complexity (pre-fill logic, update path) that I hadn't considered, which is what let me actually fix the estimate instead of just feeling uncertain about it. I responded by re-estimating it from a 1 to a 3, and wrote that exact realization into my Assignment 2.4 NOTES.md Update #1, since it was a real example of a backlog phrase hiding real work.
+
+### Task 8 — Before/after a real message
+
+**Original message** :
+ "Hi — this is my PipelinePal kickoff doc for Assignment 3.1. Task 7 needs at least one real comment from you before I can move on. Could you leave one when you get a chance? Thanks."
+
+**Rewritten applying channel and async norms:**
+"Hi — sharing my PipelinePal kickoff doc for Assignment 3.1 (link above, Commenter access). No rush at all, but whenever you get a chance this week: a comment anywhere in the Goal or Scope section would be most useful, since that's what I'm least sure is well-scoped. Thanks!"
+
+**What changed and why:**
+- Removed the implicit pressure of "before I can move on" — that frames it as blocking them on my deadline, which isn't their problem to carry, even if it's true for me.
+- Added a specific pointer to which section would be most useful, instead of leaving them to guess where to comment — this is the same fix identified in Question 1.
+- Added an explicit "no rush," which is honest async etiquette: if something is genuinely not urgent, the message should say so plainly instead of implying urgency through tone.
+
+## NOTES.md Updates
+
+**1. What the BudgetBuddy practice revealed**
+Rewriting someone else's bad message made it obvious that "the bug report and the scope question" bundling problem is exactly what I do too — my real Question 1 example had the same root issue (one message, one urgency, done right), just less extreme than BudgetBuddy's version.
+
+**2. The self-check I almost skipped**
+Yes — directly in Task 5. My first instinct was to describe the blocker as "I don't know how to do validation," which would have skipped past what I'd actually already checked (that `createBoard()` has zero validation right now). Writing the "what I tried" section forced me to be honest that I'd only looked at the existing code, not tried an actual validation approach yet — so the real ask had to be a scoping question, not a "how do I write this" question.
+
+**3. Giving feedback on something real**
+Writing feedback on my own actual `createBoard()` function felt harder than BudgetBuddy's `updateBudget()`, specifically because I already knew *why* the gap existed (built fast, under time pressure, documented as a known limitation) — which made it tempting to soften the feedback into an excuse instead of a real suggestion. Sticking to "here's the gap, here's a specific fix" instead of "well, this is understandable because..." took actual discipline that the throwaway sample didn't require at all.
+
+## Links to real artifacts
+
+- Real help request (Task 5): see above
+- Real PR feedback (Task 6):https://github.com/ThatoGoodwill/ThatoGoodwill-daily-app/commit/991cae381e38f92e6c1e43fe0af6bc49c62c7e0e#r200764038
+- Real feedback reflection (Task 7): see above, referencing Assignment 2.4 NOTES.md Update #1
+- Before/after message (Task 8): see above
